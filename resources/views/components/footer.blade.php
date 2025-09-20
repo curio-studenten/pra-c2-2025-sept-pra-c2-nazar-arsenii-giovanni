@@ -2,6 +2,10 @@
 <footer>
   <div class="footer">
 	© {{ __('misc.copyright') }}
+  <a href="#">Over ons</a>
+  <a href="#">Social media</a>
+  <p>Telefoonnummer: ###########</p>
+
   </div>
 </footer>
 

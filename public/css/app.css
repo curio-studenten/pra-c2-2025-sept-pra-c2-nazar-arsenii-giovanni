@@ -318,6 +318,11 @@ fieldset {
         display: none;
 }
 
+footer a{
+    color: white;
+    margin-left: 10px;
+}
+
 legend {
     display: block;
     width: 100%;
