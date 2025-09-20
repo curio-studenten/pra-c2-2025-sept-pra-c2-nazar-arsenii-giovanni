@@ -13,7 +13,7 @@
 
     <p>{{ __('introduction_texts.type_list', ['brand'=>$brand->name]) }}</p>
 
-
+        <div class="manuals">
         @foreach ($manuals as $manual)
 
             @if ($manual->locally_available)
@@ -25,5 +25,5 @@
 
             <br />
         @endforeach
-
+        </div>
 </x-layouts.app>
