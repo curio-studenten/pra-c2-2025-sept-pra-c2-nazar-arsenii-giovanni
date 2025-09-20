@@ -14,6 +14,11 @@
 
             <div class="col-md-8">
                 <x-header />
+<a href="{{ url('language/en') }}?redirect={{ urlencode(url()->full()) }}">🇬🇧 English</a>
+<a href="{{ url('language/nl') }}?redirect={{ urlencode(url()->full()) }}">🇳🇱 Nederlands</a>
+
+
+
 
                 <ul class="breadcrumb">
                     <li><a href="/" title="{{ __('misc.home_alt') }}"

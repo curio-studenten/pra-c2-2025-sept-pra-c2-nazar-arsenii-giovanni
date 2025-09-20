@@ -6,17 +6,18 @@ use Illuminate\Http\Request;
 
 class LocaleController extends Controller
 {
-    public function changeLocale($language_slug, Request $request)
-    {
-        // Allowed languages
-        $allowed_languages = array('nl','en');
+    public function changeLocale($language_slug)
+{
+    if (in_array($language_slug, ['en', 'nl'])) {
+        session(['locale' => $language_slug]);
+    }
 
-        if( in_array($language_slug, $allowed_languages) )
-        {
-            $request->session()->put('locale', $language_slug);
-        }
+    // Redirect to the page we came from, or homepage as fallback
+    $redirect = request()->get('redirect', url()->previous());
 
-        return redirect()->route('home');
+    return redirect($redirect);
+
+
     }
     /* public function changeLocale(Request $request)
     {
