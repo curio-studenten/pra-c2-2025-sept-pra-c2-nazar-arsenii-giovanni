@@ -11,7 +11,10 @@ class ManualController extends Controller
     public function show($brand_id, $brand_slug, $manual_id )
     {
         $brand = Brand::findOrFail($brand_id);
-        $manual = Manual::findOrFail($manual_id);
+    $manual = Manual::findOrFail($manual_id);
+
+    // Increment visits atomically each time the manual page is viewed
+    $manual->increment('visits');
 
         return view('pages/manual_view', [
             "manual" => $manual,

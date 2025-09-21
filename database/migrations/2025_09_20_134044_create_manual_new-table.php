@@ -11,7 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        // Add a visits counter to manuals table
+        Schema::table('manuals', function (Blueprint $table) {
+            $table->unsignedBigInteger('visits')->default(0)->after('downloadedServer');
+        });
     }
 
     /**
@@ -19,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        // Remove the visits counter
+        Schema::table('manuals', function (Blueprint $table) {
+            $table->dropColumn('visits');
+        });
     }
 };

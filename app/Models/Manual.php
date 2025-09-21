@@ -9,6 +9,27 @@ class Manual extends Model
 {
     use HasFactory;
 
+    // Mass assignable fields
+    protected $fillable = [
+        'brand_id', 'name', 'filesize', 'originUrl', 'filename', 'downloadedServer', 'visits'
+    ];
+
+    protected $casts = [
+        'filesize' => 'integer',
+        'visits' => 'integer',
+    ];
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    // Scope: order by popularity
+    public function scopePopular($query)
+    {
+        return $query->orderByDesc('visits');
+    }
+
     // Returns the filesize in a human readable format
     public function getFilesizeHumanReadableAttribute(){
 

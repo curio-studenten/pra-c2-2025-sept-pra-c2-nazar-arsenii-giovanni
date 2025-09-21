@@ -6,6 +6,19 @@
         <p>{{ __('introduction_texts.homepage_line_3') }}</p>
     </x-slot:introduction_text>
 
+    @isset($topManuals)
+        <h2>{{ __('Top 10 most popular manuals') }}</h2>
+        <ul>
+            @foreach($topManuals as $m)
+                <li>
+                    <a href="/{{ $m->brand->id }}/{{ $m->brand->getNameUrlEncodedAttribute() }}/{{ $m->id }}/">
+                        {{ $m->brand->name }}: {{ $m->name }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    @endisset
+
     <h1>
         <x-slot:title>
             {{ __('misc.all_brands') }}

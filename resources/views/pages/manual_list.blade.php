@@ -14,16 +14,23 @@
     <p>{{ __('introduction_texts.type_list', ['brand'=>$brand->name]) }}</p>
 
 
+    @isset($topManuals)
+        <h2>Top 5</h2>
+        <ul>
+            @foreach($topManuals as $m)
+                <li>
+                    <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/{{ $m->id }}/" title="{{ $m->name }}">{{ $m->name }}</a>
+                </li>
+            @endforeach
+        </ul>
+    @endisset
+
     
         <div class="manuals">
         @foreach ($manuals as $manual)
 
-            @if ($manual->locally_available)
-                <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/{{ $manual->id }}/" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
-                ({{$manual->filesize_human_readable}})
-            @else
-                <a href="{{ $manual->url }}" target="new" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
-            @endif
+            <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/{{ $manual->id }}/" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
+            ({{$manual->filesize_human_readable}})
 
             <br />
         @endforeach
