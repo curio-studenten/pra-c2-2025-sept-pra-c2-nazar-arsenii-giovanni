@@ -38,6 +38,7 @@ use App\Http\Controllers\LocaleController;
 // Homepage
 Route::get('/', function () {
     $brands = Brand::all()->sortBy('name');
+    $description = 'Hallo, Op de pagina kunt de handleiding hierbij downloaden.';
     $topManuals = Manual::popular()->with('brand')->take(10)->get();
     return view('pages.homepage', [
         'brands' => $brands,
