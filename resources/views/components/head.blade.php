@@ -8,5 +8,6 @@
 {{ $head ?? '' }}
 
 <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/overrides.css') }}" rel="stylesheet">
 
 <title>Download your manual: Free user guides for all brands and devices!</title>

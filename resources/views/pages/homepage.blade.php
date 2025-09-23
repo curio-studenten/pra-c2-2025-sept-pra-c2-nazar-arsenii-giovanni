@@ -25,6 +25,21 @@
         </x-slot:title>
     </h1>
 
+    <nav class="az-menu" aria-label="Brands A–Z">
+        @php
+            $letters = range('A','Z');
+            // Determine which letters exist in dataset
+            $present = $brands->map(fn($b) => strtoupper(substr($b->name,0,1)))->unique()->toArray();
+        @endphp
+        @foreach($letters as $L)
+            @if(in_array($L, $present))
+                <a href="/{{ $L }}" class="az-item">{{ $L }}</a>
+            @else
+                <span class="az-item az-disabled">{{ $L }}</span>
+            @endif
+        @endforeach
+    </nav>
+
 
     <?php
     $size = count($brands);
@@ -47,8 +62,8 @@
 
                             if (!isset($header_first_letter) || (isset($header_first_letter) && $current_first_letter != $header_first_letter)) {
                                 echo '</ul>
-						<h2>' . $current_first_letter . '</h2>
-						<ul>';
+                        <h2>' . $current_first_letter . '</h2>
+                        <ul>';
                             }
                             $header_first_letter = $current_first_letter
                             ?>

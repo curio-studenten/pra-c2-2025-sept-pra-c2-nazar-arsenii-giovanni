@@ -27,6 +27,7 @@ Productcat:		/category/12/Computers/
 
 use App\Models\Brand;
 use App\Models\Manual;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TypeController;
@@ -38,13 +39,32 @@ use App\Http\Controllers\LocaleController;
 // Homepage
 Route::get('/', function () {
     $brands = Brand::all()->sortBy('name');
-    $description = 'Hallo, Op de pagina kunt de handleiding hierbij downloaden.';
     $topManuals = Manual::popular()->with('brand')->take(10)->get();
     return view('pages.homepage', [
         'brands' => $brands,
         'topManuals' => $topManuals,
     ]);
 })->name('home');
+
+// Brand index per letter (e.g. /B)
+Route::get('/{letter}', function (string $letter) {
+    $letter = strtoupper($letter);
+    abort_unless(preg_match('/^[A-Z]$/', $letter) === 1, 404);
+
+    $brands = Brand::whereRaw('UPPER(LEFT(name,1)) = ?', [$letter])
+        ->orderBy('name')
+        ->get();
+
+    // For A–Z menu: which letters are present overall
+    $allBrands = Brand::all();
+    $present = $allBrands->map(fn($b) => strtoupper(substr($b->name,0,1)))->unique()->toArray();
+
+    return view('pages.brands_by_letter', [
+        'letter' => $letter,
+        'brands' => $brands,
+        'present' => $present,
+    ]);
+})->where('letter', '[A-Za-z]');
 
 Route::get('/manual/{language}/{brand_slug}/', [RedirectController::class, 'brand']);
 Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::class, 'brand']);
@@ -62,9 +82,3 @@ Route::get('/{brand_id}/{brand_slug}/{manual_id}/', [ManualController::class, 's
 
 // Generate sitemaps
 Route::get('/generateSitemap/', [SitemapController::class, 'generate']);
-
-Route::get('/contact', function () {
-    return view('pages.contact');
-});
-
-Route::post('/contact', [ContactController::class, 'store']);

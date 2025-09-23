@@ -21,3 +21,6 @@ composer.lock
 .vs/slnx.sqlite
 .vs/pra-c2-2025-sept-pra-c2-nazar-arsenii-giovanni/v17/.wsuo
 .vs/pra-c2-2025-sept-pra-c2-nazar-arsenii-giovanni/v17/DocumentLayout.json
+
+# Ignore local SQLite DBs (project runs on MySQL)
+/database/*.sqlite
