@@ -7,7 +7,7 @@
     </x-slot:introduction_text>
 
     @isset($topManuals)
-        <h2>{{ __('Top 10 most popular manuals') }}</h2>
+        <h2>{{ __('introduction_texts.top_10') }}</h2>
         <ul>
             @foreach($topManuals as $m)
                 <li>

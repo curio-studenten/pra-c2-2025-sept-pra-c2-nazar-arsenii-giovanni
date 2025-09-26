@@ -18,5 +18,6 @@ return [
 'homepage_line_3' => "Vind snel de handleiding door het juiste merk hieronder te selecteren.",
 'type_list' => "Hieronder staan alle verschillende typen :brand. Selecteer het apparaat van uw keuze om de handleiding of gebruikersgids te downloaden.",
 'manual_list' => "Hier kunt u alle handleidingen en gebruikersgidsen voor de :brand :type vinden. Klik op de onderstaande links om de handleiding te bekijken of te downloaden.",
+'top_10' => "Top 10 meeste populier handleidingen"
 
 ];
