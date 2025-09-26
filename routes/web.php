@@ -29,6 +29,8 @@ use App\Models\Brand;
 use App\Models\Manual;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RedirectController;
+
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\ManualController;
@@ -68,7 +70,11 @@ Route::get('/{letter}', function (string $letter) {
 
 Route::get('/manual/{language}/{brand_slug}/', [RedirectController::class, 'brand']);
 Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::class, 'brand']);
+Route::get('/contact', function () {
+    return view('pages.contact');
+});
 
+Route::post('/contact', [ContactController::class, 'store']);
 Route::get('/datafeeds/{brand_slug}.xml', [RedirectController::class, 'datafeed']);
 
 // Locale routes
