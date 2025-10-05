@@ -37,6 +37,7 @@ use App\Http\Controllers\ManualController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\FormController;
 
 // Homepage
 Route::get('/', function () {
@@ -76,6 +77,9 @@ Route::get('/contact', function () {
 
 Route::post('/contact', [ContactController::class, 'store']);
 Route::get('/datafeeds/{brand_slug}.xml', [RedirectController::class, 'datafeed']);
+
+Route::get('/form', [FormController::class, 'index'])->name('form');
+Route::post('/form', [FormController::class, 'store'])->name('form.store');
 
 // Locale routes
 Route::get('/language/{language_slug}', [LocaleController::class, 'changeLocale']);

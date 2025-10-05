@@ -72,6 +72,14 @@ class Manual extends Model
         else	// If it's not download, link to the origin
             $url = $originUrl;
 
-        return $url; */
-    }
+        return $url;
+    }*/
+    protected $fillable = [
+        'name',
+        'brand_id',
+        'originUrl',
+        'filesize',
+        'filename',
+        'downloadedServer',
+    ];
 }
