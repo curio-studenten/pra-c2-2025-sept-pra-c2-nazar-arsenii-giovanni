@@ -62,24 +62,7 @@ class Manual extends Model
     public function getUrlAttribute()
     {
         return $this->originUrl;
-
-        /* $filename = $this->filename;
-        $originUrl = $this->originUrl;
-
-        // If it's downloaded a filename is available, link to our own CDN
-        if( !empty($filename ) )
-            $url = 'http://cdn.downloadyourmanual.com/'.$filename;
-        else	// If it's not download, link to the origin
-            $url = $originUrl;
-
-        return $url;
-    }*/
-    protected $fillable = [
-        'name',
-        'brand_id',
-        'originUrl',
-        'filesize',
-        'filename',
-        'downloadedServer',
-    ];
+    
+    
+    }
 }
