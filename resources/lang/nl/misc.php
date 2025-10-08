@@ -23,7 +23,7 @@ return [
 'view_manual_alt' => "Bekijk direct je handleiding",
 'all_brands' => "Alle merken",
 'delete' => "Druk om handleiding te verwijderen",
-'add_manual' => "Handleinding toevoegen",
-'del_manual' => "Handleinding verwijderen"
+'add_manual' => "Handleiding toevoegen",
+'del_manual' => "Handleiding verwijderen"
 
 ];
