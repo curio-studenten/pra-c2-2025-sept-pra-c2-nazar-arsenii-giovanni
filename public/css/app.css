@@ -81,7 +81,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+.trash-bin{
+     width: 25px;
+    height: 30px;
+    background: url("../img/Recycle\ Bin\ Full.png");
+    background-size: cover;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 5px;
+}
 
+.trash-bin:hover {
+            transform: translateY(-2px);
+        }
 
 p {
     margin-top: 0;

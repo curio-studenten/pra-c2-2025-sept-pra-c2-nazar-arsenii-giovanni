@@ -2,9 +2,9 @@
 <footer>
   <div class="footer">
 	© {{ __('misc.copyright') }}
-  <a href="#">Over ons</a>
+  <a href="#">{{ __('introduction_texts.about_us') }}</a>
   <a href="#">Social media</a>
-  <p>Telefoonnummer: ###########</p>
+  <p>{{ __('introduction_texts.phone_number') }}: ###########</p>
 
   </div>
 </footer>

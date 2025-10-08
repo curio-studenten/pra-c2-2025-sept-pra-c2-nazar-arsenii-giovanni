@@ -22,5 +22,8 @@ return [
 'view_manual' => "Directly view your manual",
 'view_manual_alt' => "Directly view your manual",
 'all_brands' => "All brands",
+'delete' => "Click to delete manual",
+'add_manual' => "Add Manual",
+'del_manual' => "Delete manual"
 
 ];

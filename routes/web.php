@@ -38,6 +38,8 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\DeleteController;
+
 
 // Homepage
 Route::get('/', function () {
@@ -48,6 +50,8 @@ Route::get('/', function () {
         'topManuals' => $topManuals,
     ]);
 })->name('home');
+
+
 
 // Brand index per letter (e.g. /B)
 Route::get('/{letter}', function (string $letter) {
@@ -80,6 +84,10 @@ Route::get('/datafeeds/{brand_slug}.xml', [RedirectController::class, 'datafeed'
 
 Route::get('/form', [FormController::class, 'index'])->name('form');
 Route::post('/form', [FormController::class, 'store'])->name('form.store');
+Route::get('/delete', [DeleteController::class, 'index'])->name('delete');
+Route::delete('/delete/{id}', [DeleteController::class, 'destroy'])->name('delete.destroy');
+
+
 
 // Locale routes
 Route::get('/language/{language_slug}', [LocaleController::class, 'changeLocale']);
@@ -92,3 +100,4 @@ Route::get('/{brand_id}/{brand_slug}/{manual_id}/', [ManualController::class, 's
 
 // Generate sitemaps
 Route::get('/generateSitemap/', [SitemapController::class, 'generate']);
+
