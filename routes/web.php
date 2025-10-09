@@ -51,6 +51,13 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+// Short link redirect (MUST be before /{letter} route!)
+Route::get('/link/{code}', function ($code) {
+    $shortLink = \App\Models\ShortLink::where('code', $code)->firstOrFail();
+    $manual = $shortLink->manual;
+    $brand = $manual->brand;
+    return redirect("/{$brand->id}/{$brand->getNameUrlEncodedAttribute()}/{$manual->id}/");
+});
 
 
 // Brand index per letter (e.g. /B)
@@ -97,6 +104,9 @@ Route::get('/{brand_id}/{brand_slug}/', [BrandController::class, 'show']);
 
 // Detail page for a manual
 Route::get('/{brand_id}/{brand_slug}/{manual_id}/', [ManualController::class, 'show']);
+
+// Get short link for a manual
+Route::get('/{brand_id}/{brand_slug}/{manual_id}/short-link', [ManualController::class, 'getShortLink']);
 
 // Generate sitemaps
 Route::get('/generateSitemap/', [SitemapController::class, 'generate']);
